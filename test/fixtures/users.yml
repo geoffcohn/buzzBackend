@@ -2,10 +2,12 @@
 
 one:
   username: MyString
-  phone_number: 1
-  tokens: 1
+  phonenumber: 1
+  latitude: 9.99
+  longitude: 9.99
 
 two:
   username: MyString
-  phone_number: 1
-  tokens: 1
+  phonenumber: 1
+  latitude: 9.99
+  longitude: 9.99
