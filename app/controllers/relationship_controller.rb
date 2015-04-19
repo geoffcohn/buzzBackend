@@ -1,5 +1,5 @@
 class RelationshipController < ApplicationController
-  before_action :set_relationship, only [:update, :destroy]
+  before_action :set_relationship, only: [:update, :destroy]
   def create
     @relationship = Relationship.new(relationship_params)
     @relationship.save
