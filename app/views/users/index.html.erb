@@ -16,6 +16,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
         <td><%= user.username %></td>
         <td><%= user.phonenumber %></td>
         <td><%= user.latitude %></td>
