@@ -4,5 +4,9 @@ class User < ActiveRecord::Base
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
 
-   has_many :friends, through: :active_relationships                             
+   has_many :friends, through: :active_relationships
+
+   def find_friends
+    this.friends
+    end                             
 end
