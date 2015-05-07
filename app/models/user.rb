@@ -6,7 +6,10 @@ class User < ActiveRecord::Base
 
    has_many :friends, through: :active_relationships
 
-   def find_friends
-    this.friends
+    def find_friends
+      this.friends
+    end
+    def to_param
+      username                             
     end                             
 end
