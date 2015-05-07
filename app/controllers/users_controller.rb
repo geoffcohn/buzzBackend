@@ -12,7 +12,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    puts "this is @user.username: ", @user.username
     respond_to do |format|
+      format.html #{render json: @user}
       format.json { render json: @user, root: false}
     end
   end
@@ -29,6 +31,11 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    puts "\n", params, "\n","\n"
+    puts user_params["username"], "\n", user_params, "\n"
+    #puts "\n", "\n", "this is the params-id", params[:id], "immediately after"
+
+
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -69,11 +76,19 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      puts "\n","\n"," set_user method params[:id]", params[:id], "\n","params[pas]","\n"
+      puts params[:password]
+
+      if params[:password] != User.find_by(username: params[:id]).password
+        render :fail
+      else
+        @user = User.find_by username: params[:id]
+      end 
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.permit(:username, :phonenumber, :latitude, :longitude)
+      params.require(:user).permit(:id, :username, :password, :phonenumber, :latitude, :longitude)
     end
 end
