@@ -75,8 +75,15 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      puts "\n","\n","\n"," set_user method params[:id]", params[:id], "\n","\n","\n"
-      @user = User.find_by username: params[:id]
+      puts "\n","\n"," set_user method params[:id]", params[:id], "\n","params[pas]","\n"
+      puts params[:password]
+
+      if params[:password] != User.find_by(username: params[:id]).password
+        render :fail
+      else
+        @user = User.find_by username: params[:id]
+      end 
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
