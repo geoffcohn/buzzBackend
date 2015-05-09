@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  resources :relationships
 
   post 'user/create'
   # The priority is based upon order of creation: first created -> highest priority.
