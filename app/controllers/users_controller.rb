@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /users/username
+  # GET /users/username.json
   def show
     puts "this is @user.username: ", @user.username
     respond_to do |format|
@@ -80,8 +80,8 @@ class UsersController < ApplicationController
       puts params[:password]
 
       if params[:password] != User.find_by(username: params[:id]).password
-        render :fail
-      else
+        render :text => "{\"result\":\"fail\"}"
+      else 
         @user = User.find_by username: params[:id]
       end 
 
@@ -91,4 +91,5 @@ class UsersController < ApplicationController
     def user_params
       params.permit(:id, :username, :password, :phonenumber, :latitude, :longitude)
     end
+
 end
